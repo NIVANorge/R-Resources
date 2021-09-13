@@ -1,0 +1,30 @@
+---
+title: "Create a GitHub account"
+output: html_notebook
+---
+<style>
+kbd { background-color:#32a848;  }</style>
+
+## Account Setup and Configuration
+
+* The first thing you need to do is set up a free user account. Visit https://github.com. Provide an email address and click the big green <p><kbd>Sign up for GitHub</kbd> button.</p>
+
+![](images/GitHub_Page.png)
+
+* Then follow the instructions to create a password and username. After a couple of extra steps you will create an account.
+
+* In the next step you will get the following page: 
+
+
+![](images/GitHub_Team.png)
+
+
+* You can skip the questions and go directly to **`Continue`** On the next page you can choose
+**`Collaborative coding`**.
+ 
+![](images/GitHub_Features.png)
+
+
+* Next choose the free version. Annnnd... **voilà! You now have a Github account!**
+
+![](images/GitHubNewAccount.png)
