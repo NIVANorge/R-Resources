@@ -11,7 +11,8 @@ kbd { background-color:#32a848;  }</style>
 
 ![](images/GitHub_Page.png)
 
-* Then follow the instructions to create a password and username. After a couple of extra steps you will create an account.
+* Then follow the instructions to create a password and username. **When choosing an username, we highly recommend you take a look at the [Chapter 4 (Register a GitHub account)](https://happygitwithr.com/github-acct.html) of Jenny Bryan’s [Happy Git and GitHub for the useR (happygitwithr.com)](happygitwithr.com).**
+After a couple of extra steps you will create an account.
 
 * In the next step you will get the following page: 
 
