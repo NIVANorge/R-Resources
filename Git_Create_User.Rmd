@@ -43,4 +43,4 @@ After a couple of extra steps you will create an account.
 
 ## Installing Git
 
-* To install most programs at your NIVA computer you need administrative rights. To get this rights you need contact it-vakt (it-vakt@niva.no) and ask for adminstrative rights to your computer. You will shortly get an email with the username and password you need for installation. Then please follow the instructions on [Chapter 6 Install Git]( https://happygitwithr.com/install-git.html) of Jenny Bryan’s [Happy Git and GitHub for the useR (happygitwithr.com)](happygitwithr.com).
+* To install most programs at your NIVA computer you need administrative rights. To get that you need contact it-vakt (it-vakt@niva.no) and ask for administrative rights to your computer. You will shortly get an email with the username and password you need for installation. Then please follow the instructions on [Chapter 6 Install Git]( https://happygitwithr.com/install-git.html) of Jenny Bryan’s [Happy Git and GitHub for the useR (happygitwithr.com)](happygitwithr.com).
