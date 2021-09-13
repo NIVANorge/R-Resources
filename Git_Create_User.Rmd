@@ -1,6 +1,17 @@
 ---
-title: "Create a GitHub account"
-output: html_notebook
+title: "Getting Git"
+output:
+  html_notebook:
+    includes:
+      after_body: footer.html
+    toc: yes
+    highlight: pygments
+  md_document:
+    variant: markdown_github
+  html_document:
+    toc: yes
+    df_print: paged
+  
 ---
 <style>
 kbd { background-color:#32a848;  }</style>
@@ -29,3 +40,7 @@ After a couple of extra steps you will create an account.
 * Next choose the free version. Annnnd... **voilà! You now have a Github account!**
 
 ![](images/GitHubNewAccount.png)
+
+## Installing Git
+
+* To install most programs at your NIVA computer you need administrative rights. To get this rights you need contact it-vakt (it-vakt@niva.no) and ask for adminstrative rights to your computer. You will shortly get an email with the username and password you need for installation. Then please follow the instructions on [Chapter 6 Install Git]( https://happygitwithr.com/install-git.html) of Jenny Bryan’s [Happy Git and GitHub for the useR (happygitwithr.com)](happygitwithr.com).
