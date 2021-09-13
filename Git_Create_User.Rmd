@@ -1,20 +1,28 @@
 ---
 title: "Getting Git"
 output:
+  
+  html_document:
+    toc: yes
+    df_print: paged
+  md_document:
+    variant: markdown_github
   html_notebook:
     includes:
       after_body: footer.html
     toc: yes
     highlight: pygments
-  md_document:
-    variant: markdown_github
-  html_document:
-    toc: yes
-    df_print: paged
-  
 ---
 <style>
 kbd { background-color:#32a848;  }</style>
+
+## Important!  
+Before you can install Git, you need to get a **temporary administrator password** from IT. So if you haven't done that already, write to *it-vakt@niva.no* and ask them politely to give you this!    
+
+## Introduction   
+When we talk about Git, we usually mean the combination of two things: (1) The *program* Git, which you have to install on your computer, and (2) a **user account at Github** (or another website) for hosting projects that use git. (There are several alternatives to Github, such as BitBucket, GitLab, GitBucket etc., but here at NIVA we use Github.) So, while many confuse the two, Github and Git is not the same thing. When we store our projects in Github with RStudio, RStudio uses the Git program "under the hood".   
+  
+We suggest that you start by setting up your Github account, and then install Git. Installing Git is not straightforward, but remember that it is [half the battle](https://happygitwithr.com/install-intro.html) - once it is installed and works, using it is easy and can usually be done by "point and click" in RStudio!            
 
 ## Account Setup and Configuration
 
@@ -43,4 +51,8 @@ After a couple of extra steps you will create an account.
 
 ## Installing Git
 
-* To install most programs at your NIVA computer you need administrative rights. To get that you need contact it-vakt (it-vakt@niva.no) and ask for administrative rights to your computer. You will shortly get an email with the username and password you need for installation. Then please follow the instructions on [Chapter 6 Install Git]( https://happygitwithr.com/install-git.html) of Jenny Bryan’s [Happy Git and GitHub for the useR (happygitwithr.com)](happygitwithr.com).
+* To install most programs at your NIVA computer you need administrative rights. To get that you need contact it-vakt (it-vakt@niva.no) and ask for administrative rights to your computer. You will shortly get an email with the username and password you need for installation.  
+* If you are a Windows user, go to the [Git for Windows](https://gitforwindows.org/) web site and click the Download button. Make sure you notice *where* on the computer you download it to (for instance the 'Downloads' folder). When downloading has finished, go to the file (`Git-2.33.0.2-64-bit.exe`), *right-click* and select "Run as Administrator". 
+* For choices during installation and setting up Git, we suggest that you follow the instructions in [Chapter 6 and 7]( https://happygitwithr.com/install-git.html) of Jenny Bryan’s [Happy Git and GitHub for the useR (happygitwithr.com)](happygitwithr.com).   
+* Mac and Linux users can also find good guidance in [happygitwithr.com](happygitwithr.com).    
+* We (Viviane and Dag) will be available for questions!  
