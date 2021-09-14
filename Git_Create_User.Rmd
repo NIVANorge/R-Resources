@@ -2,16 +2,16 @@
 title: "Getting Git"
 output:
   
-  html_document:
-    toc: yes
-    df_print: paged
-  md_document:
-    variant: markdown_github
   html_notebook:
     includes:
       after_body: footer.html
     toc: yes
     highlight: pygments
+  md_document:
+    variant: markdown_github
+  html_document:
+    toc: yes
+    df_print: paged
 ---
 <style>
 kbd { background-color:#32a848;  }</style>
@@ -56,3 +56,36 @@ After a couple of extra steps you will have created an account.
 * For choices during installation and setting up Git, we suggest that you follow the instructions in [Chapter 6 and 7]( https://happygitwithr.com/install-git.html) of Jenny Bryan’s [Happy Git and GitHub for the useR (happygitwithr.com)](happygitwithr.com).   
 * Mac and Linux users can also find good guidance in [happygitwithr.com](happygitwithr.com).    
 * We ([Viviane](mailto:vig@niva.no) and [Dag](mailto:Dag.Hjermann@niva.no)) will be available for questions!  
+
+### Installing on Windows   
+
+If you are a Windows user, go to the [Git for Windows](https://gitforwindows.org/) web site and click the Download button. Make sure you notice *where* on the computer you download it to (for instance the 'Downloads' folder). When downloading has finished, go to the file (`Git-2.33.0.2-64-bit.exe`), *right-click* and select "Run as Administrator".   
+<img src = "images/git_installation_file.JPG" width="60%">  
+
+* Continue setup using the guidance in part *6.2 option 1* of [Chapter 6](https://happygitwithr.com/install-git.html) of Jenny Bryan’s [Happy Git and GitHub for the useR (happygitwithr.com)](happygitwithr.com). Especially note the options for *Adjusting your PATH environment*.     
+   
+* **Mac and Linux users:** see [happygitwithr.com](https://happygitwithr.com/install-git.html).   
+  
+### Set up Git
+
+Open the Git Bash "shell" - see below - and use it to [introduce yourself to Git](https://happygitwithr.com/hello-git.html) - just 3 short commands.   
+<img src = "images/git_bash.JPG" width="60%">  
+  
+### The rest    
+
+You can skip chapter 8 in [happygitwithr.com](happygitwithr.com) for now. The same for Chapter 9, which shows you how to work with the command-line interface of Git.      
+  
+[Chapter 10](https://happygitwithr.com/credential-caching.html#activating-a-git-credential-helper) explains how to get a personal access token (PAT) from Github. Store the token (a bunch of random letters and numbers) by copy-pasting it to (for instance) a text file or a Google Document. Then, in R, run the following:  
+```
+install.packages("gitcreds")  # if you haven't already installed it, of course
+library(gitcreds)
+gitcreds_set()
+```
+Choose option 'Replace these credentials' and copy-paste your token.  
+
+### Test that your setup works      
+
+Try the work flow in [chapter 12](https://happygitwithr.com/rstudio-git-github.html) to see if RStudio detects the Git program. If it doesn't, please refer to [chapter 13](https://happygitwithr.com/rstudio-see-git.html).  
+  
+* Again, we ([Viviane](mailto:vig@niva.no) and [Dag](mailto:Dag.Hjermann@niva.no)) will be available for questions!  
+
