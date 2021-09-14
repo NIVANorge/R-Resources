@@ -2,16 +2,16 @@
 title: "Getting Git"
 output:
   
+  html_document:
+    toc: yes
+    df_print: paged
+  md_document:
+    variant: markdown_github
   html_notebook:
     includes:
       after_body: footer.html
     toc: yes
     highlight: pygments
-  md_document:
-    variant: markdown_github
-  html_document:
-    toc: yes
-    df_print: paged
 ---
 <style>
 kbd { background-color:#32a848;  }</style>
@@ -30,10 +30,10 @@ We suggest that you start by setting up your Github account, and then install Gi
 
 ![](images/GitHub_Page.png)
 
-* Then follow the instructions to create a password and username. **When choosing an username, we highly recommend you take a look at the [Chapter 4 (Register a GitHub account)](https://happygitwithr.com/github-acct.html) of Jenny Bryan’s [Happy Git and GitHub for the useR (happygitwithr.com)](happygitwithr.com).**
-After a couple of extra steps you will create an account.
+* Then follow the instructions to create a password and username. **When choosing an username, we highly recommend taking a look at the [Chapter 4 (Register a GitHub account)](https://happygitwithr.com/github-acct.html) of Jenny Bryan’s [Happy Git and GitHub for the useR (happygitwithr.com)](happygitwithr.com).**
+After a couple of extra steps you will have created an account.
 
-* In the next step you will get the following page: 
+* In will then get the following page: 
 
 
 ![](images/GitHub_Team.png)
