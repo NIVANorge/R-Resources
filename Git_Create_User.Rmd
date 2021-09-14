@@ -1,17 +1,20 @@
 ---
 title: "Getting Git"
 output:
-  
+  word_document:
+    toc: yes
+  md_document:
+    variant: markdown_github
   html_notebook:
     includes:
       after_body: footer.html
     toc: yes
     highlight: pygments
-  md_document:
-    variant: markdown_github
   html_document:
     toc: yes
     df_print: paged
+  pdf_document:
+    toc: yes
 ---
 <style>
 kbd { background-color:#32a848;  }</style>
