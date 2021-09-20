@@ -1,0 +1,179 @@
+---
+title: "Git exercise notes"
+author: "DHJ"
+date: "18 9 2021"
+output: html_document
+---
+
+## Starting a new project    
+
+Follow the description in chapter 15.1 and 15.2 of Jenny Bryans's guide: [New project, GitHub first](https://happygitwithr.com/new-github-first.html).  
+  
+In short:   
+
+* Go to https://github.com and make sure you are logged in  
+* Click green “New repository” button   
+* Set  
+    - Repository name: myrepo (or whatever you wish)  
+    - Public   
+    - set YES on 'Initialize this repository with a README'  
+    - Click the big green button “Create repository.”
+   
+This opens a new Github repo. Now,   
+
+- Copy the HTTPS clone URL to your clipboard via the green “Clone or Download” button.  
+    
+Then, go to RStudio and start a new Github project:      
+
+- File > New Project > Version Control > Git  
+- In the top box, “repository URL” paste the URL of your new GitHub repository. It will be something like this https://github.com/jennybc/myrepo.git.  
+- In the bottom box 'Create project as subdirectory of', select the folder you want (i.e.,: be intentional about where you create this Project).  
+- Suggest you “Open in new session”  
+- Click “Create Project” to create a new directory, which will be all of these things:  
+    - **a directory or “folder” on your computer**  
+    - **a Git repository, linked to a remote GitHub repository**    
+    - **an RStudio Project**  
+  
+
+## Your first commit    
+
+Start a new R Markdown file by selecting (in the RStudio menu)   
+
+* File   
+* -> New file  
+* -> R Markdown   
+    - In "title", put for instance "Git training"  
+  
+This will open a sample markdown file which suits our purposes - just keep it as it is, for now. 
+
+* Run the three grey 'chunks' in the script (by clicking the little green triangle in the top right of each chunk.   
+* Save the file with a short name, for instance 'myscript' (RStudio will add '.Rmd' to the name).  
+  
+Now click on the 'Git' tab in the top right window of RStudio. This pane now contains three lines, 'myscript', as well as two files that were automatically created when you created the project. All three files have an empty checkbox and two yellow question marks:  
+- The yellow '?' marks indicates that this is a new file which not yet under version control     
+- The empty checkbox means that the file is not *staged*     
+
+- Click all the three check-boxes.  
+    - The files have now been *staged for commit*, which is marked with a blue 'A'  
+- click the 'Commit' button and a new window will pop up  
+- In the top right part of this window, write a short (but informative) *commit message* (keep it to only one line). 
+    - If you want to write more extensive comments, skip one line and write your comments below  
+- Click the 'commit' button. This opens a new small window which confirms that your first commit has been done  
+- When you close this confirmation message, note that the Git pane now is empty  
+    - However, there is a message saying that "Your branch is ahead of 'origin/main' by 1 commit". This means that you have one commit in your local repository (on your computer) which has not yet been pushed to the remote repository (Github).  
+  
+## The basic routine: edit, save, stage and commit    
+
+Now we want to do some changes to our script. Add "col = 'red'" to the plot in the last chunk (and run the chunk again if you want):    
+```
+plot(pressure, col = "red")
+```
+
+* Save the file (Control + S)   
+* The file now pops up in the Git window again, this time with a blue 'M' (for 'modified')  
+* Stage the file (check the checkbox) and push   
+    - This time, the bottom part of the commit window will contain just a small part of the script, with the change we made marked as a red line (the old version) and a green line (the new version). This is called a **diff**. As you see, even when you just a word, Git will record it as deleting the entire line and replacing it with a new line contating the extra word.   
+* Commit the file with a new message, for instance "Version 2 - red dots"   
+
+## Push  
+* Click the push button  
+* Check in Github and confirm that our files are showing up there (might have to push F5 to update)  
+* Normally, we push only a few times per day, perhaps only once   
+
+
+## Undo last edits  
+
+* Now pretend that the cat walked over the computer keyboard   
+* Save the file with the resulting mess    
+* Right-click the file and select "Reset"   
+    - This is the same as `git checkout` command  
+  
+## Branching and merging  
+
+### Create a new branch  
+
+Branching is a central concept of git. If you work alone, it is a useful way to try  "experimental" coding in your script, while still keeping the original script intact. If you work with others, two or mor epeople can work in parallell on the same project or even in the same script, and then everybody's changes can be merged afterwards. (Don't confuse 'branch' with 'fork', which is a slightly different concept).   
+
+* Click on the branching tool, which is in the Git menu bar, just to the left of where it says 'master'  
+* Call the new branch "car-analysis", leave the rest as it is and click "Create"  
+* Now note that where it used to say "master", it now says "car-analysis". This means that you are now on the new branch that you have created   
+    - in Git-speak, HEAD is on the new branch   
+    - this means that when you change 
+* Now change the second chunk in your script so you get a plot instead of summary:   
+```
+plot(cars)
+```
+* Save, stage (check box) and commit with some message  
+* Now check the history by clicking the little clock on on the Git menu bar    
+    - The first line says has a coloured box saying that you (HEAD) are on the "car-analysis" branch, and then gives your last commit message  
+    - The second line has two coloured boxes: one says "origin/car-analysis" (meaning: this is where we started the car-analysis branch), the other says "main" (meaning that nothing has happened to the main branch since we started the car-analysis branch)  
+
+### Make changes in the old branch as well  
+
+* Change back to the main branch   
+    - Click "car-analysis" in the Git menu bar and change to "main" under "local branches" (meaning your computer)   
+* Note what happened to the script file in your editor - we are back to `summary(cars)`!    
+* Now change the color of the "pressure" plot to "blue"  
+* Save, stage and commit  
+* Check the history again. In the top of the history window, click "main" and switch to "all branches"   
+* Note: you can change back and forth between the branches as much as you like, and make changes to both of them  
+
+### Merge the changes in the new branch back to the old branch  
+* Make sure you are on 'main' (check the right part of the GIt menu bar)  
+* Go to either  
+    * The 'terminal' pane in RStudio's bottom left quadrant  
+    * Or select 'Shell' from the "cogwheel" symbol in the Git menu bar  
+* Give the command ```git status``` (and push enter) - it should say 'on branch main' and 'nothing to commit, working tree clean'  
+* Then merge using the command      
+```
+git merge car-analysis
+```
+* Check the history (remember to select "all branches") - it now shows both merges and that the branches have merged   
+* As the changes were two different places in the script, Git was able to include both chnages in the new document  
+* The history shows both 'main' and 'car-analysis' at HEAD   
+* We may want to delete the 'car-analysis' branch since we are finished using it, an it just points to the same location as main   
+   - The command for this is `git branch -d car-analysis`    
+   - However, Git doesn't want to do that, as it says that 'car-analysis' is not fully merged. The message says something about 'remote', so we      
+   - We need to push both branches to Github first. The simplest way to do this is using the command `git push --all origin`.  
+   - (Alternatively you can use the RStudio Git interface to push main, then switch to 'car-analysis' and push that too.)    
+   - Then switch back to main and repeat `git branch -d car-analysis`.
+
+### Git merge with conflict   
+
+In the example above, the branches 'main' and 'car-analysis' made changes in two different parts of the document, so Git was able to include both changes in the merged script. If the two branches contain edits in the same parts (lines) of the script - typically if persons A and B don't know that they work on the same part - a **merge conflict** will result. Git cannot decide which changes should be retained - you have to decide that. 
+  
+We will make such a situation and then solve it.       
+
+* Create a new branch, e.g. 'branch-person-B'    
+* Change the color of the 'pressure' plot to 'purple'. Save, stage and commit.    
+* Switch to branch main (click on the branch name in the Git menu bar)    
+* Change the color of the 'pressure' plot to 'brown'. Save, stage and commit. 
+* Check the history (remember to select "all branches").  
+* Now, merge (`git merge branch-person-B`)  
+* This did not go smoothly, as indicated by the text "merge conflict in myscript.Rmd" in the command window, and two orange "U" icons next to the file in the Git tab   
+* Now check how the script in your editor looks like. Git has put some extra stuff in your file:  
+    - a line with `<<<<<<< HEAD`  (HOME is where we performed the merge from, i.e. 'main' in this case)    
+    - the code in the 'main' branch (`col = "brown"`)  
+    - a line with `=======`  
+    - the code in the 'branch-person-B' branch (`col = "purple"`)   
+    - a line with `>>>>>>> branch-person-B`    
+* Now you simply edit the file, i.e. just delete either the line with 'brown' or the line with 'purple'. The lines starting with `<<<<<<<`, `=========`  and `>>>>>>>>>` can just be deleted.  
+* Save, stage (click the checkbox) and merge the ordinary way  
+  
+Now, everything is ok again!  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
