@@ -113,29 +113,4 @@ ggplot(
 ## Let's try!
 
 
-```{r include=FALSE}
-library(ggplot2)
-gaptest <-
-  read.table("GapTest.txt", header = TRUE, check.names = FALSE)
-gaptest
-gaptest1 <- reshape2::melt(gaptest, id.vars = "Year")
-p <- ggplot(gaptest1, aes(x = Year, y = value, colour = variable)) +
-  geom_point(alpha = 0.7, size = 10)  +
-
-  theme(
-    legend.position = "none",
-    # axis.text.x = element_blank(),
-    # axis.title.x = element_blank(),
-    # axis.text.y = element_blank(),
-    # axis.title.y = element_blank(),
-    panel.background = element_rect(fill = "transparent"),
-    plot.background = element_rect(fill = "transparent", color = NA)
-  )
-
-p + labs(caption = "Created by Viviane Girardin in R", title = "Interpreting data")
-
-
-#save_plot("QMark.jpg", p, base_height = 10, base_width = 5)
-
-```
 
