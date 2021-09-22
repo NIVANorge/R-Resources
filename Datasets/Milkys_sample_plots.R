@@ -5,7 +5,7 @@ library(dplyr)    # for filter and %>%
 #
 # Individual measurements  
 #
-dat_ind <- read.csv("Files_for_other_use/Milkys_individual_data_selection.csv")
+dat_ind <- read.csv("Milkys_individual_data_selection.csv")
 
 ggplot(dat_ind %>% filter(Substance == "HG" & Species == "Gadus morhua" & Station_code == "30B"), 
        aes(Body_length, Conc, color = Limit_of_quantification)) +
@@ -16,7 +16,7 @@ ggplot(dat_ind %>% filter(Substance == "HG" & Species == "Gadus morhua" & Statio
 #
 # Median per station*year  
 #
-dat_median <- read.csv("Files_for_other_use/Milkys_median_data_selection.csv")
+dat_median <- read.csv("Milkys_median_data_selection.csv")
 
 param <- "CB118"
 ggplot(dat_median %>% filter(Substance == param & Species == "Mytilus edulis"), 
