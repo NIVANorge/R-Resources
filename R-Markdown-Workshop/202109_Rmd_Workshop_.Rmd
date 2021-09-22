@@ -315,6 +315,16 @@ and <code>&#96;&#96;&#96;</code>.
 The <code>&#96;&#96;&#96;</code> symbol on the top and bottom creates the chunk. `r` means the language you are coding on. Then you have the name of the chunk. This is optional, but **_you cannot have chunks with the same name!_**
 
 
+Chunk options
+Use results='hold' to have all the code shown first, then all the results shown afterwards.
+
+Nice bonus for Rmd files in RStudio
+In a markdown file, Control + Shift + O ('O' as in Oslo, not as in zero) will show you a nice 'clickable' outline in the right side of the script window, based on the #, ##, ###, and #### headings. You can also open the outline using the menu: Code > Show Document Outline. Note that you should only use # in the start of the document, otherwise the outline doesn't show properly.
+
+
+![](images/Rmd_outline.png)
+
+The Document Outline can also be used for ordinary R scripts; it will then show comments (lines starting with #) that ends with ---- (yes, four hyphens), for instance # Reading data ----.
 ### Challenge 2
 
  Add code chunks to:
@@ -372,6 +382,7 @@ treated. Here are some examples:
 - Use `eval=FALSE` to have the code shown but not evaluated.
 - Use `warning=FALSE` and `message=FALSE` to hide any warnings or
   messages produced.
+- Use `results='hold'` to have all the code shown first, then all the results shown afterwards.
 - Use `fig.height` and `fig.width` to control the size of the figures
   produced (in inches).
 
@@ -402,6 +413,15 @@ If you have multiple R Markdown files in a common directory, you might
 want to use `fig.path` to define separate prefixes for the figure file
 names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 
+
+Chunk options
+Use results='hold' to have all the code shown first, then all the results shown afterwards.
+
+Nice bonus for Rmd files in RStudio
+In a markdown file, Control + Shift + O ('O' as in Oslo, not as in zero) will show you a nice 'clickable' outline in the right side of the script window, based on the #, ##, ###, and #### headings. You can also open the outline using the menu: Code > Show Document Outline. Note that you should only use # in the start of the document, otherwise the outline doesn't show properly.
+![](images/Rmd_outline.png)
+(Image file has been added to 'images')
+The Document Outline can also be used for ordinary R scripts; it will then show comments (lines starting with #) that ends with ---- (yes, four hyphens), for instance # Reading data ----.
 
 ### Challenge 3
 
