@@ -17,9 +17,6 @@ knitr::opts_chunk$set(warning = FALSE)
 
 # Introduction to R Markdown ![](images/RMD.png)
 
-##
-
-***
 
 # Objectives
 
@@ -31,7 +28,6 @@ knitr::opts_chunk$set(warning = FALSE)
 - Become familiar with Markdown language
 - Learn about R Notebook
 
-***
 
 # What is Markdown?
 
@@ -42,14 +38,16 @@ knitr::opts_chunk$set(warning = FALSE)
 >- Can be written in any text editor
 >-Some text editors can render Markdown documents, but these documents are still readable if you can't render them.
 >- Markdown files can be converted to HTML
+>- Markdown is also a converting tool
+
 
 ##  ![](images/rmd_vs_html.png)
 
 
 ## What is R Markdown? 
 
->- A single medium for writing code and generating reports. 
->- Creates fully reproducible documents 
+>- R Markdown is a file format for making dynamic documents with R 
+>- R Markdown files have an .Rmd extension 
 >- Supports dozens of static and dynamic output formats including HTML, PDF, and MS Word
 >- Uses multiple languages including R, Python, and SQL.
 
