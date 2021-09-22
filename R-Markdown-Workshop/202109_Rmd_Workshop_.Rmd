@@ -22,20 +22,30 @@ div.blue { background-color:#DBE1E5; border-radius: 5px; padding: 20px;}
 <div class = "blue">
 # Objectives
 
-- Understand what RMarkdown is and why you should use it
+- Understand what R Markdown is and why you should use it
 - Learn the basic components of R Markdown
-- Learn how to create an RMarkdown file 
-- Export an RMarkdown file into many file formats
-- Understand the value of writing reproducible reports
+- Learn how to create an R Markdown file 
+- Export an R Markdown file into many file formats
 - Become familiar with R code chunks, and understand their purpose, structure and options 
 - Become familiar with Markdown language
 - Learn about R Notebook
 </div>
 ***
 
-# Understanding Markdown
 
-***What is Markdown?***
+```{r global_options, echo=FALSE}
+knitr::opts_chunk$set(message=FALSE, warning=FALSE)
+```
+
+<ul class="pager"> <!--this is the style of the button-->
+<li><a href="#">Table of contents</a></li> <!--This button takes me to previous page-->
+</ul>
+
+
+# Understanding RMarkdown
+
+## What is Markdown?
+
 
 * A plain text formatting syntax
 
@@ -43,15 +53,18 @@ div.blue { background-color:#DBE1E5; border-radius: 5px; padding: 20px;}
   * Can be written in any text editor. 
   * Some text editors can render Markdown documents, but these documents are still readable if you can't render them.
     
+<p></p>
+
 * Markdown files can be converted to HTML
-    * Markdown is a system for writing web pages by marking up the text much
-as you would in an email rather than writing html code. The marked-up
+    * Markdown is a system for writing web pages by marking up the text. The marked-up
 text gets _converted_ to html, replacing the marks with the proper
 html code.
 
-# What is R Markdown? 
+## What is R Markdown? 
 
 * R Markdown is a file format for making dynamic documents with R.
+
+*	R Markdown is written in an Rmd file (which is just a text file, but RStudio shows scripts with .Rmd extension in a special way). When you hit the "knit" or "preview" button in RStudio, the process below (involving both knitr and pandoc) automatically turns your Rmd file into a HTML page which opens in your browser.
 
 * `knitr` allows you to mix basically any type of text with code from different programming languages, but we recommend that you use `R Markdown`, which mixes Markdown
 with R. [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web
@@ -64,32 +77,34 @@ pages.
 
 ## Why you should use it
 
-Writing long reports with Word can become easily frustrating when you need to format figures or page breaks.
+* Writing long reports with Word can become easily frustrating when you need to format figures or page breaks.
 Creating a web page (as an html file) using R Markdown makes things easier.
 
-Additionally, the formatting of and R Markdown document is simple and easy to modify, allowing you to spend
+* Additionally, the formatting of and R Markdown document is simple and easy to modify, allowing you to spend
 more time on your analyses instead of writing reports.
 
-
-# Understand the value of writing reproducible reports
-
-Ideally, as an analysis you would run in a lab, you want your documents to be _reproducible_: If an
+* Ideally, as an analysis you would run in a lab, you want your documents to be _reproducible_: If an
 error is discovered, or if some additional subjects are added to the
 data, you can just re-compile the report and get the new or corrected
 results rather than having to reconstruct figures, paste them into
 a Word document, and hand-edit various detailed results.
 
+* Finally, if you use Git and Github, it is easy to share your final report - containing both your code and resulting tables and figures - as a web page on the Github for easy viewing by everybody in your organization (or everybody in the world).
 
-This sort of idea has been called "literate programming".
 
-
-<ul class="pager"> <!--this is the style of the button-->
-<li><a href="#">Table of contents</a></li> <!--This button takes me to previous page-->
+<ul class="pager"> 
+<li><a href="#">Table of contents</a></li> 
 </ul>
 
-## Learn how to create an RMarkdown file
+# Creating an R Markdown file
 
-Within RStudio, click File &rarr; New File &rarr; R Markdown and
+Before we create our R Markdown document, let's create a project:
+
+Within RStudio, go to File &rarr; New Project &rarr; New Directory &rarr; New Project. Then choose the directory name (this will be the name of the file in your computer and the name of your project), and where you want to save it. Then click on **`Create Project`**.
+
+![](images/New_Project.png)
+
+To create an R Mardown file click on File &rarr; New File &rarr; R Markdown and
 you'll get a dialog box like this:
 
 ***
@@ -118,14 +133,14 @@ output: html_document
 
 You can delete any of those fields if you don't want them
 included. The double-quotes aren't strictly _necessary_ in this case.
-They're mostly needed if you want to include a colon in the title.
+They're mostly needed if you want to include a colon (`:`) in the title.
 
 RStudio creates the document with some example text to get you
 started. Note below that there are chunks like
 
 <pre>
-  &#96;&#96;&#96;{r}
-summary(cars)
+&#96;&#96;&#96;{r}
+knitr::opts_chunk$set(warning = FALSE)
 &#96;&#96;&#96;
 </pre>
 
@@ -135,12 +150,10 @@ by their results. More on this later.
 
 
 
-<ul class="pager"> <!--this is the style of the button-->
-<li><a href="#">Table of contents</a></li> <!--This button takes me to previous page-->
-<li><a href="#data-analysis-report">Next (Data Analysis Report)</a></li> 
-</ul>
+<ul class="pager"> 
+<li><a href="#">Table of contents</a></li>
 
-## Markdown
+## Basic Markdown language
 
 
 For now, let's delete all of the stuff that's there and write a bit of
@@ -261,7 +274,9 @@ F^2^) with `F^2^`.
 
 If you know how to write equations in
 [LaTeX](http://www.latex-project.org/), you can use `$ $` and `$$ $$` to insert math equations, like
-`$E = mc^2$` and
+$E = mc^2$ (`$E = mc^2$`) and
+
+$$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 
 ```
 $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
@@ -271,12 +286,20 @@ You can review Markdown syntax by navigating to the
 "Markdown Quick Reference" under the <kbd>Help</kbd> field in the
 toolbar at the top of RStudio.
 
+<ul class="pager"> 
+<li><a href="#">Table of contents</a></li> 
+</ul>
+
 ## R code chunks
 
 The real power of Markdown comes from
 mixing markdown with chunks of code. This is R Markdown. When
 processed, the R code will be executed; if they produce figures, the
 figures will be inserted in the final document.
+
+To create a chunk, click on ![](images/chunk.png) 
+and choose R. You can also use the shortcut
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd> on Windows and Linux, or <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.
 
 The main code chunks look like this:
 
@@ -287,51 +310,44 @@ your_data <- read.csv("your_data.csv")
 </pre>
 
 That is, you place a chunk of R code between <code>&#96;&#96;&#96;{r chunk_name}</code>
-and <code>&#96;&#96;&#96;</code>. You should give each chunk
-a unique name, as they will help you to fix errors and, if any graphs are
-produced, the file names are based on the name of the code chunk that
-produced them. You can create code chunks quickly in RStudio using the shortcuts
-<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd> on Windows and Linux, or <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.
+and <code>&#96;&#96;&#96;</code>. 
 
-</details>
+The <code>&#96;&#96;&#96;</code> symbol on the top and bottom creates the chunk. `r` means the language you are coding on. Then you have the name of the chunk. This is optional, but **_you cannot have chunks with the same name!_**
+
 
 ### Challenge 2
 
  Add code chunks to:
 
- * Load the ggplot2 package
- * Read the data
- * Create a plot
- * Convert the file into HTML
+ * Open library `Gapminder` and `ggplot2` (install packages if you don't have them)
+ * Create the following plot:
+ ```
+ ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "hotpink") +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1/4)
+  ```
+ * Knit the file to HTML
+ * Make changes in the plot and knit the file again
  
 <details>
-<summary>Solution to Challenge 2</summary>
+<summary>**Solution to Challenge 2**</summary>
 
- <pre>
- &#96;&#96;&#96;{r load-ggplot2}
- 
- library("ggplot2")
- 
- &#96;&#96;&#96;
- </pre>
 
- <pre>
- &#96;&#96;&#96;{r read-gapminder-data}
- 
+```{r}
 library(gapminder)
- 
- &#96;&#96;&#96;
- </pre>
+library(ggplot2)
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "hotpink") +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 1/4)
 
- <pre>
- &#96;&#96;&#96;{r make-plot}
- 
- plot(lifeExp ~ year, data = gapminder)
- 
- &#96;&#96;&#96;
- </pre>
+```
+
 
 </details>
+
+<ul class="pager"> 
+<li><a href="#">Table of contents</a></li> 
+</ul>
 
 ## How things get compiled
 
@@ -344,10 +360,6 @@ produced, links to those figures are included.
 The Markdown and figure documents are then processed by the tool
 [`pandoc`](http://pandoc.org/), which converts the Markdown file into an
 html file, with the figures embedded.
-
-
-
-
 
 
 ## Chunk options
@@ -377,7 +389,7 @@ repeatedly; for this, you can set _global_ chunk options, like so:
 
 <pre>
 &#96;&#96;&#96;{r global_options, echo=FALSE}
-knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
+knitr::opts_chunk$set(fig.pafig.path="fig.path=" =FALSE, warni/",FALSE,
                       echo=FALSE, results="hide", fig.width=11)
 &#96;&#96;&#96;
 </pre>
@@ -404,8 +416,8 @@ Create an HTML file with:
  <summary>**Solution to Challenge 3**</summary>
 
 You can review all of the `R` chunk options by navigating to
-the "R Markdown Cheat Sheet" under the "Cheatsheets" section
-of the "Help" field in the toolbar at the top of RStudio.
+the <kbd>R Markdown Cheat Sheet</kbd> under the <kbd>Cheatsheets</kbd> section
+of the <kbd>Help</kbd> field in the toolbar at the top of RStudio.
 
 </details>
 
@@ -514,7 +526,7 @@ Note that the `echo = FALSE parameter was added to the code chunk to prevent pri
 
 ```
 <details>
-<summary>**Answer to challenge 5**</summary>
+<summary>**Solution to challenge 5**</summary>
 ```
  ---
 title: ""

@@ -7,9 +7,13 @@ output:
           center: true
 ---
 
-
 <!-- You can use the title field above and have it as your opening slide, but in this case it
 is not possible to add images, as far as I know. My workaround was to have a blank title and use a markdown line instead (line below). -->
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+```
+
 
 # Introduction to R Markdown ![](images/RMD.png)
 
@@ -19,18 +23,17 @@ is not possible to add images, as far as I know. My workaround was to have a bla
 
 # Objectives
 
-- Understand what RMarkdown is and why you should use it
+- Understand what R Markdown is and why you should use it
 - Learn the basic components of R Markdown
-- Learn how to create an RMarkdown file 
-- Export an RMarkdown file into many file formats
-- Understand the value of writing reproducible reports
+- Learn how to create an R Markdown file 
+- Export an R Markdown file into many file formats
 - Become familiar with R code chunks, and understand their purpose, structure and options 
 - Become familiar with Markdown language
 - Learn about R Notebook
 
 ***
 
-## What is Markdown?
+# What is Markdown?
 
 ![alt text or image title](images/markdown-logo2.png){ width=40% }
 
@@ -41,15 +44,6 @@ is not possible to add images, as far as I know. My workaround was to have a bla
 >- Markdown files can be converted to HTML
 
 ##  ![](images/rmd_vs_html.png)
-
-## Why Use Markdown instead of Microsoft Office?
-
-
->- Markdown is more flexible. You can create websites, documents, notes, books, presentations, email messages, and technical documentation.
-
->- Markdown files can be opened using virtually any application (including MS Word). 
-
->- Markdown is platform independent. You can create Markdown-formatted text on any device running any operating system.
 
 
 ## What is R Markdown? 
