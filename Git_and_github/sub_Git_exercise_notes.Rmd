@@ -46,13 +46,13 @@ Now you hopefully have a **Git pane** in the upper right of RStudio. Here you wi
 - The yellow question mark symbols means that these are new files that Git does not "follow". Git will not be "aware" of any changes in these files
     
 Now check both boxes to the left of the files:  
-![Git pane before any files have been staged](Git_exercise_notes_images/git_pane_first_commit2.JPG)  
+![](Git_exercise_notes_images/git_pane_first_commit2.JPG)  
 
 - The icons will change to a green "A" icon, meaning that the file has now been "added" to Git's index and **staged** for commit. From now on, Git will be "aware" of any changes in these files as soon as the files are changed.  
      
        
 Now click the "Commit" button. The following window will open:  
-![Git pane before any files have been staged](Git_exercise_notes_images/git_pane_first_commit3.JPG)
+![](Git_exercise_notes_images/git_pane_first_commit3.JPG)
 
 - except that the top right window will be blank. Here you need to fill in a **commit message** in line number 1. Write a short (but informative) commit message (keep it to only one line). If you want to write more extensive comments, keep     line number 2 blank, and write your comments from line number 3 onwards (as we have done above).    
 - Click "Commit"  
@@ -78,28 +78,31 @@ Now this file pops up in the Git pane, with yellow question marks, indicating th
 
 Stage and commit the file:   
 
-![Git pane before any files have been staged](Git_exercise_notes_images/git_commit2.JPG)
+![](Git_exercise_notes_images/git_commit2.JPG)
 
-When you have commited the file, the Git pane is again empty, but not that it says "Your branch is ahead of 'origin/main' by 2 commits':  
-![Git pane before any files have been staged](Git_exercise_notes_images/git_commit2_before_push.JPG)  
+## Pushing to Github (+ checking history)  
+  
+After your last change, the Git pane is again empty, indicating that your files and your local repo are the same. However, the pane has the following message: "Your branch is ahead of 'origin/main' by 2 commits':  
+![](Git_exercise_notes_images/git_commit2_before_push.JPG)  
 
 - This means that although the *local* Git repo is in sync with your files (the Git pane is empty), the *remote* repo (i.e., Github) is *not* in sync with your local repo - there are two changes in the local repository that have not been pushed to Github.  
   
 We can also see this in the history. Click the "history" button:  
-![Git pane before any files have been staged](Git_exercise_notes_images/git_pane_history_button.JPG)
+![](Git_exercise_notes_images/git_pane_history_button.JPG)
   
 This looks as this:  
-![Git pane before any files have been staged](Git_exercise_notes_images/git_commit2_before_push_history.JPG)
-- The two blue marks with `origin/main` and `origin/HEAD`  shows that tGithub is still at the first commit (which was made when you created the repo in Github), while the green "HEAD" at the top shows where "you" are in the local repository - on the last change. 
-  
-Now **push** your changes to Githuib using this button:  
-![Git pane before any files have been staged](Git_exercise_notes_images/git_pane_push_button.JPG)  
+![](Git_exercise_notes_images/git_commit2_before_push_history.JPG)
+- In the top part, the two blue marks with `origin/main` and `origin/HEAD`  shows that tGithub is still at the first commit (which was made when you created the repo in Github), while the green "HEAD" at the top shows where "you" are in the local repository - on the last change.  
+- The bottom part shows the "name" of the commit (the **SHA**), the commit message, and the change itself (here, the entire file is shown in green because everything is new)
+
+Now **push** your changes to Github using this button:  
+![](Git_exercise_notes_images/git_pane_push_button.JPG)  
 
 - A small window will open with a message that you have push your changes to Github (well, that's not what it literally says, but that's waht it means)
 - Close this small window
 
 Now check the history again:  
-![Git pane before any files have been staged](Git_exercise_notes_images/git_commit2_after_push_history.JPG)  
+![](Git_exercise_notes_images/git_commit2_after_push_history.JPG)  
 - Note that both the blue and green 'bubbles' now are on the last commit  
 - This means that your local repository (on your hard disk) and remote repository (Github) are in sync  
 - You may also check in Github and confirm that our files are showing up there (might have to push F5 to update)  
@@ -109,48 +112,77 @@ Now check the history again:
 
 Now we want to do some changes to our script. Add "col = 'red'" to the plot in the last chunk (and run the chunk again if you want):    
 ```
+# CHANGE NUMBER 1
 plot(pressure, col = "red")
 ```
-
+(the `CHANGE NUMBER 1` comment beforeis just for this exercise, to make it easier to keep track of our changes.)
 * Save the file (Control + S)   
-* The file now pops up in the Git window again, this time with a blue 'M' (for 'modified')  
-* Stage the file (check the checkbox) and push   
-    - This time, the bottom part of the commit window will contain just a small part of the script, with the change we made marked as a red line (the old version) and a green line (the new version). This is called a **diff**. As you see, even when you just a word, Git will record it as deleting the entire line and replacing it with a new line contating the extra word.   
-* Commit the file with a new message, for instance "Version 2 - red dots"   
 
-## Undo your last edits (before committing)  
+The file now pops up in the Git window again, this time with a blue 'M' (for 'modified'):  
 
-* Now pretend that the cat walked over the computer keyboard, and saved the file     
-* Make some mess in your file and save (but don't commit)    
+![](Git_exercise_notes_images/git_file_change1.JPG)  
+
+Stage the file (check the checkbox) and commit with a suitable message:     
+![](Git_exercise_notes_images/git_file_change1_commit.JPG)  
+    
+## Amending your commit  
+After you have committed, you might find out that you actually committed a little early - you want to add some changes that 'belong to' the commit you just performed. This is very easy. For instance, you have just added and commited the change `col = "red"` but you find out that you want to explain why you did this. So in the script you simply do the change you want - in this case, adding the comment `# because red is such a nice colour`  -  save, stage, and click the 'commit' button. Then you check the "Amend" checkbox:     
+![](Git_exercise_notes_images/git_file_change1_amend.JPG)  
+- this brings up your previous commit message (you can modify the message too if you want)  
+- now click commit, and your extra comment has been added to the previous commit, instead of becoming a tiny commit in itself    
+- you can even use 'repeated amending' [as a conscious strategy](https://happygitwithr.com/repeated-amend.html)    
+
+## Undoing things  
+Undoing in Git depends a lot of whether you have only saved the file, saved and commited, or saved, committed and pushed   
+
+### Undo your last edits (before committing)  
+
+* Use case: the cat walked over the computer keyboard, and even managed to save the file     
+* Make some messy chnages in your file and save (but don't commit)    
 * Right-click the file and select "Reset"   
-    - This is the same as `git checkout` command  
-  
-## Undo (some of) your last edits (after committing, but befor pushing)  
+    - note that the term 'reset' in this menu is quite sloppy, as reset is also a quite different command   
+
+### Undo (some of) your last edits (after committing, but befor pushing)  
 
 * As above, make some (nonsensical) changes, save, stage and commit (but don't push)     
 * In the *terminal pane*, write the following:  
 ```
-git reset --soft HEAD^1
+git reset --soft HEAD~1
 ```
-
+(On Windows you use the `^` sign, on Linux (and Mac?) use `~`)  
+* HEAD~1 refers to the state before your last commit ('one commit back')  
 * Then, click the Update button in the Git pane (all the way to the right)  
 * Then, mark the file and click the Commit button     
-* Now you can first **unstage** one or all of your changes  
-* - and then you can **discard** these changes   
+* Now you can first **unstage** some or all of your changes:  
+![](Git_exercise_notes_images/git_unstage_chunk.JPG)  
+* - and then you also need to **discard** these changes   
+![](Git_exercise_notes_images/git_discard_chunk.JPG)  
 
 Your script will now return to the old state!  
 
-## Undo your last edits after committing *and* pushing     
+### Undo your last edits after committing *and* pushing     
 
 * Make some (nonsensical) changes as before, save, stage and commit, AND push       
 * In the *terminal pane*, write the following:  
 ```
-git revert HEAD^0  
+git revert HEAD~0
 ```
+* `git revert` makes a new commit that is the opposite of your last commit  
 * Your file should now change back  
-* Also, your default text editor (e.g. Notepad) should open with a suggested commit message - you can just close this window (or you can make changes, then close it)  
-* In addition to your file, your local repo has been updated with a commit that is the opposite of the previous commit  
-* This is a preferable way to undo changes that has been "published" on Github, as it doesn't change the history of changes (which cold potentially make a mess for other people), but just adds another change that happens to turn the file back to what it used to be    
+* Also, your default text editor (e.g. Notepad) should open with a suggested commit message - you can just close this window (or you can change the commit message first if you like)  
+* The Git Pane is empty, showing that your files and your *local* repo is in sync     
+* This is a preferable way to undo changes that has been "published" on Github, as it doesn't change the history of changes (which cold potentially make a mess for other people). Instead, it just adds another change that turns the file back to what it used to be.   
+
+  
+In the history, you can see both changes:  
+
+<br>
+Your last commit ("change 3") shows the deleted parts in red and the new parts in green, so the commit changed `col = "blue"` to `col = "brown"`    ![](Git_exercise_notes_images/git_revert_command_1.JPG)  
+
+<br><br>
+The `git revert`command above changed `col = "brown"`  back to `col = "blue"` , and automatically makes the commit message `Revert change 3`     ![](Git_exercise_notes_images/git_revert_command_2.JPG)
+
+
 
 ## Pulling your colleague's changes   
 
