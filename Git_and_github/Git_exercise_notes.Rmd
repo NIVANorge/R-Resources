@@ -2,7 +2,7 @@
 title: "Git exercise notes"
 author: "DHJ"
 date: "18 9 2021"
-output: html_document
+output: html_notebook
 ---
 
 ## Starting a new project    
@@ -19,23 +19,49 @@ In short:
     - set YES on 'Initialize this repository with a README'  
     - Click the big green button “Create repository.”
    
-This opens a new Github repo. Now,   
+This opens a new Github repo. Next thing to do:   
 
 - Copy the HTTPS clone URL to your clipboard via the green “Clone or Download” button.  
     
 Then, go to RStudio and start a new Github project:      
 
 - File > New Project > Version Control > Git  
-- In the top box, “repository URL” paste the URL of your new GitHub repository. It will be something like this https://github.com/jennybc/myrepo.git.  
+- You will see this window:  
+![](Git_exercise_notes_images/git_create_project3.JPG)   
+
+- In the top box, “repository URL” paste the URL of your new GitHub repository. It will be something like this https://github.com/jennybc/myrepo.git (see figure below)  
 - In the bottom box 'Create project as subdirectory of', select the folder you want (i.e.,: be intentional about where you create this Project).  
-- Suggest you “Open in new session”  
+- Suggest you “Open in new session”   
 - Click “Create Project” to create a new directory, which will be all of these things:  
     - **a directory or “folder” on your computer**  
     - **a Git repository, linked to a remote GitHub repository**    
     - **an RStudio Project**  
-  
 
 ## Your first commit    
+
+Now you hopefully have a **Git pane** in the upper right of RStudio. Here you will see the following:  
+![Git pane before any files have been staged](Git_exercise_notes_images/git_pane_first_commit1.JPG)  
+
+- You will see two files that are automatically made my RStudio when you created the project (don't worry about the content of these files)  
+- The yellow question mark symbols means that these are new files that Git does not "follow". Git will not be "aware" of any changes in these files
+    
+Now check both boxes to the left of the files:  
+![Git pane before any files have been staged](Git_exercise_notes_images/git_pane_first_commit2.JPG)  
+
+- The icons will change to a green "A" icon, meaning that the file has now been "added" to Git's index and **staged** for commit. From now on, Git will be "aware" of any changes in these files as soon as the files are changed.  
+     
+       
+Now click the "Commit" button. The following window will open:  
+![Git pane before any files have been staged](Git_exercise_notes_images/git_pane_first_commit3.JPG)
+
+- except that the top right window will be blank. Here you need to fill in a **commit message** in line number 1. Write a short (but informative) commit message (keep it to only one line). If you want to write more extensive comments, keep     line number 2 blank, and write your comments from line number 3 onwards (as we have done above).    
+- Click "Commit"  
+- A small window will open with a short (but cryptic) message telling you that your file was committed  
+- Close the small window and the bigger commit window  
+  
+Now the Git pan is again empty, meaning that the local Git repository is in sync with your "workspace" (your files in the project folder).  
+
+## Adding a script  
 
 Start a new R Markdown file by selecting (in the RStudio menu)   
 
@@ -46,22 +72,39 @@ Start a new R Markdown file by selecting (in the RStudio menu)
   
 This will open a sample markdown file which suits our purposes - just keep it as it is, for now. 
 
-* Run the three grey 'chunks' in the script (by clicking the little green triangle in the top right of each chunk.   
-* Save the file with a short name, for instance 'myscript' (RStudio will add '.Rmd' to the name).  
+* Save the file with a short name, for instance `myscript.Rmd` (RStudio will automatically add `.Rmd` to the name).  
   
-Now click on the 'Git' tab in the top right window of RStudio. This pane now contains three lines, 'myscript', as well as two files that were automatically created when you created the project. All three files have an empty checkbox and two yellow question marks:  
-- The yellow '?' marks indicates that this is a new file which not yet under version control     
-- The empty checkbox means that the file is not *staged*     
+Now this file pops up in the Git pane, with yellow question marks, indicating that this file is not tracked by Git.  
 
-- Click all the three check-boxes.  
-    - The files have now been *staged for commit*, which is marked with a blue 'A'  
-- click the 'Commit' button and a new window will pop up  
-- In the top right part of this window, write a short (but informative) *commit message* (keep it to only one line). 
-    - If you want to write more extensive comments, skip one line and write your comments below  
-- Click the 'commit' button. This opens a new small window which confirms that your first commit has been done  
-- When you close this confirmation message, note that the Git pane now is empty  
-    - However, there is a message saying that "Your branch is ahead of 'origin/main' by 1 commit". This means that you have one commit in your local repository (on your computer) which has not yet been pushed to the remote repository (Github).  
+Stage and commit the file:   
+
+![Git pane before any files have been staged](Git_exercise_notes_images/git_commit2.JPG)
+
+When you have commited the file, the Git pane is again empty, but not that it says "Your branch is ahead of 'origin/main' by 2 commits':  
+![Git pane before any files have been staged](Git_exercise_notes_images/git_commit2_before_push.JPG)  
+
+- This means that although the *local* Git repo is in sync with your files (the Git pane is empty), the *remote* repo (i.e., Github) is *not* in sync with your local repo - there are two changes in the local repository that have not been pushed to Github.  
   
+We can also see this in the history. Click the "history" button:  
+![Git pane before any files have been staged](Git_exercise_notes_images/git_pane_history_button.JPG)
+  
+This looks as this:  
+![Git pane before any files have been staged](Git_exercise_notes_images/git_commit2_before_push_history.JPG)
+- The two blue marks with `origin/main` and `origin/HEAD`  shows that tGithub is still at the first commit (which was made when you created the repo in Github), while the green "HEAD" at the top shows where "you" are in the local repository - on the last change. 
+  
+Now **push** your changes to Githuib using this button:  
+![Git pane before any files have been staged](Git_exercise_notes_images/git_pane_push_button.JPG)  
+
+- A small window will open with a message that you have push your changes to Github (well, that's not what it literally says, but that's waht it means)
+- Close this small window
+
+Now check the history again:  
+![Git pane before any files have been staged](Git_exercise_notes_images/git_commit2_after_push_history.JPG)  
+- Note that both the blue and green 'bubbles' now are on the last commit  
+- This means that your local repository (on your hard disk) and remote repository (Github) are in sync  
+- You may also check in Github and confirm that our files are showing up there (might have to push F5 to update)  
+- Normally, we push only a few times per day, perhaps only once   
+
 ## The basic routine: edit, save, stage and commit    
 
 Now we want to do some changes to our script. Add "col = 'red'" to the plot in the last chunk (and run the chunk again if you want):    
@@ -75,24 +118,69 @@ plot(pressure, col = "red")
     - This time, the bottom part of the commit window will contain just a small part of the script, with the change we made marked as a red line (the old version) and a green line (the new version). This is called a **diff**. As you see, even when you just a word, Git will record it as deleting the entire line and replacing it with a new line contating the extra word.   
 * Commit the file with a new message, for instance "Version 2 - red dots"   
 
-## Push  
-* Click the push button  
-* Check in Github and confirm that our files are showing up there (might have to push F5 to update)  
-* Normally, we push only a few times per day, perhaps only once   
+## Undo your last edits (before committing)  
 
-
-## Undo last edits  
-
-* Now pretend that the cat walked over the computer keyboard   
-* Save the file with the resulting mess    
+* Now pretend that the cat walked over the computer keyboard, and saved the file     
+* Make some mess in your file and save (but don't commit)    
 * Right-click the file and select "Reset"   
     - This is the same as `git checkout` command  
   
-## Branching and merging  
+## Undo (some of) your last edits (after committing, but befor pushing)  
+
+* As above, make some (nonsensical) changes, save, stage and commit (but don't push)     
+* In the *terminal pane*, write the following:  
+```
+git reset --soft HEAD^1
+```
+
+* Then, click the Update button in the Git pane (all the way to the right)  
+* Then, mark the file and click the Commit button     
+* Now you can first **unstage** one or all of your changes  
+* - and then you can **discard** these changes   
+
+Your script will now return to the old state!  
+
+## Undo your last edits after committing *and* pushing     
+
+* Make some (nonsensical) changes as before, save, stage and commit, AND push       
+* In the *terminal pane*, write the following:  
+```
+git revert HEAD^0  
+```
+* Your file should now change back  
+* Also, your default text editor (e.g. Notepad) should open with a suggested commit message - you can just close this window (or you can make changes, then close it)  
+* In addition to your file, your local repo has been updated with a commit that is the opposite of the previous commit  
+* This is a preferable way to undo changes that has been "published" on Github, as it doesn't change the history of changes (which cold potentially make a mess for other people), but just adds another change that happens to turn the file back to what it used to be    
+
+## Pulling your colleague's changes   
+
+
+### Merge automatically  
+**TODO**  
+- Make a change in R and commit, and make a change in the same file but in a different place, on Github  
+- Push from R - you are not allowed
+- Pull, "fast-forward" merge -> no problem    
+- Push from R again
+
+### Merge with conflict    
+**TODO, but can use stuff from branch chapter**  
+- Make another change in R and commit, and then make make a change in the same file but in a different place, on Github  
+- Push from R - you are not allowed
+- Pull -> merge conflict  
+- Solve conflict and commit
+- Push from R again
+
+
+## How to check an earlier version  
+**TODO**  
+- Check in Github  
+- checkout in R  
+
+## Branching and merging (skip??) 
 
 ### Create a new branch  
 
-Branching is a central concept of git. If you work alone, it is a useful way to try  "experimental" coding in your script, while still keeping the original script intact. If you work with others, two or mor epeople can work in parallell on the same project or even in the same script, and then everybody's changes can be merged afterwards. (Don't confuse 'branch' with 'fork', which is a slightly different concept).   
+Branching is a central concept of git. If you work alone, it is a useful way to try  "experimental" coding in your script, while still keeping the original script intact. If you work with others, two or more people can work in parallell on the same project or even in the same script, and then everybody's changes can be merged afterwards. (Don't confuse 'branch' with 'fork', which is a slightly different concept).   
 
 * Click on the branching tool, which is in the Git menu bar, just to the left of where it says 'master'  
 * Call the new branch "car-analysis", leave the rest as it is and click "Create"  
