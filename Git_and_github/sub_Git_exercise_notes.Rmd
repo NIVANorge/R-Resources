@@ -6,6 +6,7 @@ output:
   html_document:
     df_print: paged  
     toc: true
+    toc_depth: 2
 ---
 
 ## Starting a new project    
