@@ -140,7 +140,7 @@ Undoing in Git depends a lot of whether you have only saved the file, saved and 
 * Use case: the cat walked over the computer keyboard, and even managed to save the file     
 * Make some messy chnages in your file and save (but don't commit)    
 * Right-click the file and select "Reset"   
-    - note that the term 'reset' in this menu is quite sloppy, as reset is also a quite different command   
+    - in git command language, this button runs `git checkout HEAD  as reset is a part command   
 
 ### Undo (some of) your last edits (after committing, but befor pushing)  
 
@@ -159,8 +159,10 @@ git reset --soft HEAD~1
 ![](Git_exercise_notes_images/git_discard_chunk.JPG)  
 
 Your script will now return to the old state!  
+- If you are really sure you want to throw your last changes overboard, replace `soft` by `hard`. Then you will not get the chance to review which changes you are deleting, though  
+    - however, if you really regret a hard reset, you can use git reflog - see [here](https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/) 
 
-### Undo your last edits after committing *and* pushing     
+### Undo your last edit after committing *and* pushing     
 
 * Make some (nonsensical) changes as before, save, stage and commit, AND push       
 * In the *terminal pane*, write the following:  
@@ -177,12 +179,45 @@ git revert HEAD~0
 In the history, you can see both changes:  
 
 <br>
-Your last commit ("change 3") shows the deleted parts in red and the new parts in green, so the commit changed `col = "blue"` to `col = "brown"`    ![](Git_exercise_notes_images/git_revert_command_1.JPG)  
+Your last commit ("change 10 aquamarine") shows that the parts in red were replaced with the parts in green, so the commit changed `col = "black"` to `col = "aquamarine`:   
+![](Git_exercise_notes_images/git_revert_head_history_1.JPG)  
 
 <br><br>
-The `git revert`command above changed `col = "brown"`  back to `col = "blue"` , and automatically makes the commit message `Revert change 3`     ![](Git_exercise_notes_images/git_revert_command_2.JPG)
+The `git revert`command above made the last commit, changing the plot color back. The diff of this commit (i.e. the green/red markings on the script) is just reversed from the commit above:     ![](Git_exercise_notes_images/git_revert_head_history_2.JPG)
 
 
+### Undo a bunch of edits after pushing     
+
+* In the history, you see each commit referred to with a SHA code. You can use these to go as far back in your history as you want:       
+```
+git revert 53A34
+```
+
+- You should pick the line *above* the version you need in the history - you will get the last version before you did commit 53A34   
+- You usually have to write just the first 5 characters of the SHA  
+  
+However, when you go far back in history will usually result in a *merge conflict*. That means that Git isn't sure of exactly which parts you want from your last version, and which edits you want from the version indicated by the SHA. This is Git's message:    
+![](Git_exercise_notes_images/git_revert_mergeconflict_1.JPG)  
+
+<br>
+
+In the script window, Git will have inserted some stuff:  
+![](Git_exercise_notes_images/git_revert_mergeconflict_2.JPG)  
+
+* This means :  
+    - a line with `<<<<<<< HEAD`  (HEAD is 'where you were' when you performed the merge)    
+    - the code of your last version    
+    - a line with `=======` separating last and old version   
+    - the code in the old version  
+    - a line with `>>>>>>> branch-person-B`    
+
+<br>
+Now, simply edit the script, i.e. just keep the parts you want and delete the parts you don't want, including the lines starting with `<<<<<<<`, `=========`  and `>>>>>>>>>`:   
+
+![](Git_exercise_notes_images/git_revert_mergeconflict_3.JPG)  
+
+- Then save, stage (click the checkbox) and merge the ordinary way  
+- As above, your previous history will still be there, so whatever you do here, it's not irreversible  
 
 ## Pulling your colleague's changes   
 
