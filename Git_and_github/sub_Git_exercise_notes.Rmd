@@ -2,7 +2,10 @@
 title: "Git exercise notes"
 author: "DHJ"
 date: "18 9 2021"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged  
+    toc: true
 ---
 
 ## Starting a new project    
