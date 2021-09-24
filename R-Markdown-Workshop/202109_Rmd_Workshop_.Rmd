@@ -494,7 +494,7 @@ Here are some data from Milkys:
 <pre>
 &#96;&#96;&#96;{r}
 library(dplyr)
-nivadata<-read.csv("..//Datasets//Milkys_individual_data_selection.csv")
+nivadata<-read.csv("..//Datasets//Milkys_individual_data_selection.csv", fileEncoding="Windows-1252")
 stations <- distinct (nivadata,Station_name)
 datahead<- head(nivadata)
 <code>&#96;&#96;&#96;</code>
