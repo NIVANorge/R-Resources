@@ -495,6 +495,8 @@ Here are some data from Milkys:
 &#96;&#96;&#96;{r}
 library(dplyr)
 nivadata<-read.csv("..//Datasets//Milkys_individual_data_selection.csv", fileEncoding="Windows-1252")
+# You can also us the file with utf8 encoding, Milkys_individual_data_selection_utf8.csv and try to see the difference
+# Hint you need to change the range of the data displayed in the table
 stations <- distinct (nivadata,Station_name)
 datahead<- head(nivadata)
 <code>&#96;&#96;&#96;</code>
