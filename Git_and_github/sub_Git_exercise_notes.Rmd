@@ -81,7 +81,9 @@ Stage and commit the file:
 ![](Git_exercise_notes_images/git_commit2.JPG)
 
 ## Pushing to Github (+ checking history)  
-  
+
+### Check local vs remote repository   
+
 After your last change, the Git pane is again empty, indicating that your files and your local repo are the same. However, the pane has the following message: "Your branch is ahead of 'origin/main' by 2 commits':  
 ![](Git_exercise_notes_images/git_commit2_before_push.JPG)  
 
@@ -95,11 +97,32 @@ This looks as this:
 - In the top part, the two blue marks with `origin/main` and `origin/HEAD`  shows that tGithub is still at the first commit (which was made when you created the repo in Github), while the green "HEAD" at the top shows where "you" are in the local repository - on the last change.  
 - The bottom part shows the "name" of the commit (the **SHA**), the commit message, and the change itself (here, the entire file is shown in green because everything is new)
 
-Now **push** your changes to Github using this button:  
+### Github token  
+
+When pushing, you will be asked for your Github username and a password. Your ordinary Github password won't do - you need to use a **token** from Github. If you are logged into Github on your browser, you will find it at [github.com/settings/tokens](https://github.com/settings/tokens). As that page says, you need to copy-paste it to somewhere else (a text file, Google Document etc.) and save it there. From there, you can copy-paste it to RStudio when you need it.  
+  
+To avoid copy-pasting the token when you need it, you can store it on your computer as this:  
+```
+# install.packages("gitcreds")
+library(gitcreds)
+gitcreds_set()
+```
+- this will give you the choices:  
+    1. Keep these credentials  
+    2: Replace these credentials  
+    3: See the password / token  
+- choose 2 and copy-pasted in your token  
+- Note: It does say "Removing current credentials…", but your 'old-fashioned' password still works when logging into Github in the browser   
+
+### Push to Github
+
+The pushing itself is very easy - just click this button:  
 ![](Git_exercise_notes_images/git_pane_push_button.JPG)  
 
-- A small window will open with a message that you have push your changes to Github (well, that's not what it literally says, but that's waht it means)
-- Close this small window
+- If you have not you credentials stored in R, you will be asked for username and password (token)  
+- A small window will open with a message that you have push your changes to Github (well, that's not what it literally says, but that's what it means)
+- Close this small window  
+- So, now the remote repository (Github) has been updated with the current contents of your local repository  
 
 Now check the history again:  
 ![](Git_exercise_notes_images/git_commit2_after_push_history.JPG)  
@@ -130,7 +153,12 @@ After you have committed, you might find out that you actually committed a littl
 ![](Git_exercise_notes_images/git_file_change1_amend.JPG)  
 - this brings up your previous commit message (you can modify the message too if you want)  
 - now click commit, and your extra comment has been added to the previous commit, instead of becoming a tiny commit in itself    
-- you can even use 'repeated amending' [as a conscious strategy](https://happygitwithr.com/repeated-amend.html)    
+- you can even use 'repeated amending' [as a conscious strategy](https://happygitwithr.com/repeated-amend.html)  
+
+## Make a web page from your Rmd script  
+**TODO**
+
+
 
 ## Undoing things  
 Undoing in Git depends a lot of whether you have only saved the file, saved and commited, or saved, committed and pushed   
