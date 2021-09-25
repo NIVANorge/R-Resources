@@ -1,11 +1,16 @@
 ---
 title: "Git exercise notes"
-author: "DHJ"
-date: "18 9 2021"
 output:
+  html_notebook:
+    includes:
+      after_body: footer.html
+    toc: yes
+    highlight: pygments
+  md_document:
+    variant: markdown_github
   html_document:
-    df_print: paged  
-    toc: true
+    toc: yes
+    df_print: paged
     toc_depth: 2
 ---
 
@@ -25,11 +30,11 @@ In short:
    
 This opens a new Github repo. Next thing to do:   
 
-- Copy the HTTPS clone URL to your clipboard via the green “Clone or Download” button.  
-    
+- Copy the HTTPS clone URL to your clipboard via the green “Code” button ![](Git_exercise_notes_images/Code_btn.png).  
+     
 Then, go to RStudio and start a new Github project:      
 
-- File > New Project > Version Control > Git  
+- File &rarr; New Project &rarr; Version Control 
 - You will see this window:  
 ![](Git_exercise_notes_images/git_create_project3.JPG)   
 
@@ -40,6 +45,17 @@ Then, go to RStudio and start a new Github project:
     - **a directory or “folder” on your computer**  
     - **a Git repository, linked to a remote GitHub repository**    
     - **an RStudio Project**  
+
+## Collaborating 
+
+- To give a team member access to your repository, click on **Settings** on the top of the **Code** button  
+
+![](Git_exercise_notes_images/Settings_btn.png)
+
+- On the menu on the right, choose **Manage Access**
+- Finally click on the green button **Invite a Collaborator**
+
+Your team member will receive an e-mail asking to accept or ignore access to the repo.
 
 ## Your first commit    
 
@@ -70,8 +86,8 @@ Now the Git pan is again empty, meaning that the local Git repository is in sync
 Start a new R Markdown file by selecting (in the RStudio menu)   
 
 * File   
-* -> New file  
-* -> R Markdown   
+* &rarr; New file  
+* &rarr; R Markdown   
     - In "title", put for instance "Git training"  
   
 This will open a sample markdown file which suits our purposes - just keep it as it is, for now. 
@@ -160,7 +176,11 @@ After you have committed, you might find out that you actually committed a littl
 - you can even use 'repeated amending' [as a conscious strategy](https://happygitwithr.com/repeated-amend.html)  
 
 ## Make a web page from your Rmd script  
-**TODO**
+
+- To create a webpage, you need to first create a repository named **_username.github.io_**. For example, for our GitHub user NivaistR, the repository for the web page is called **_NivaistR.github.io_**.
+- You will then clone this repository just like you have learned earlier, but in this repo you will create an R Markdown (or R Notebook) file and name it **Index.Rmd**. **It is important to call it Index.Rmd! Any other name will not work!**
+- Once you knit it, Pandoc will create a file named **Index.html**. This is your actual web page. Commit your new files and push them to your repository. Your webpage will be available at https://username.github.io.
+- **We recommend you adding the web pages URL to your README.md file**
 
 
 
@@ -170,7 +190,7 @@ Undoing in Git depends a lot of whether you have only saved the file, saved and 
 ### Undo your last edits (before committing)  
 
 * Use case: the cat walked over the computer keyboard, and even managed to save the file     
-* Make some messy chnages in your file and save (but don't commit)    
+* Make some messy changes in your file and save (but don't commit)    
 * Right-click the file and select "Reset"   
     - in git command language, this button runs `git checkout HEAD  as reset is a part command   
 
@@ -265,7 +285,7 @@ Now, simply edit the script, i.e. just keep the parts you want and delete the pa
 **TODO, but can use stuff from branch chapter**  
 - Make another change in R and commit, and then make make a change in the same file but in a different place, on Github  
 - Push from R - you are not allowed
-- Pull -> merge conflict  
+- Pull &rarr; merge conflict  
 - Solve conflict and commit
 - Push from R again
 
