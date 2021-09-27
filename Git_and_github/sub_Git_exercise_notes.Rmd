@@ -205,8 +205,8 @@ If you have a script (.Rmd) file called for instnce `my_script.Rmd`, knitting wi
 3. A markdown file `my_script.md` (pure text, with links to the files in 4) 
 4. A folder of images, named `my_script` (figures of 3)  
 
-When you push to Github, drop number 2, and push the source (1) and the results 3 and 4. (Note: in the Git pane, when you click the folder for staging, it will automatically select all the figures inside.) In Github, when you open the `.md` file, the figures in 4 will be visible at the right places. 
-
+When you push to Github, drop number 2, and push the source (1) and the results 3 and 4. (Note: in the Git pane, when you click the folder for staging, it will automatically select all the figures inside.) In Github, when you open the `.md` file, the figures in 4 will be visible at the right places.  
+  
 #### 2  
 Make a `github_document` with a table of contents (TOC):         
 
@@ -232,6 +232,14 @@ output:
       after_body: footer.html
     toc: yes
     highlight: pygments
+```
+
+### README  
+The README file is the project's front page on Github. Use this to give a quick overview of the project, the data/analysis flow, and which results that are important. You can use markdown headings (#, ## etc.) can make links to your Rmd and md files using the syntax `[text to show](name of file)`. Example of a sshort readme:  
+
+```
+## Analysis of contaminaton in coastal cod  
+[This script](Read_and_filter_data.Rmd) was used to read and filter the data and the main results are iin [this file](results_07.md).   
 ```
 
 
