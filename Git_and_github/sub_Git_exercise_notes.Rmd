@@ -55,7 +55,11 @@ Then, go to RStudio and start a new Github project:
 - On the menu on the right, choose **Manage Access**
 - Finally click on the green button **Invite a Collaborator**
 
-Your team member will receive an e-mail asking to accept or ignore access to the repo.
+Your team member will receive an e-mail asking to accept or ignore access to the repo.  
+
+- If you want to contribute to a project but don't have access to the repo (only read access), you can contribute anyway by **forking** the repository, which makes a kind of copy of the repository in your own github account. Then you can suggest changes using a [pull request](https://yihui.org/en/2013/06/fix-typo-in-documentation/)in Github. This allows the owner of the repo to add your suggested change very easily.    
+
+- If you have suggestions for a project, whether you are a team member or not, you can make an [ìssue](https://guides.github.com/features/issues/) in Github. It is even very useful to do for your own project!    
 
 ## Your first commit    
 
@@ -328,8 +332,8 @@ Now, simply edit the script, i.e. just keep the parts you want and delete the pa
 ## Pulling your colleague's changes   
 
 
+
 ### Merge automatically  
-**TODO**  
 - Make a change in R and commit, and make a change in the same file but in a different place, on Github  
 - Push from R - you are not allowed
 - Pull, "fast-forward" merge -> no problem    
