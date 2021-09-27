@@ -1,17 +1,17 @@
 ---
 title: "Git exercise notes"
 output:
+  html_document:
+    toc: yes
+    df_print: paged
+    toc_depth: 2
+  md_document:
+    variant: markdown_github
   html_notebook:
     includes:
       after_body: footer.html
     toc: yes
     highlight: pygments
-  md_document:
-    variant: markdown_github
-  html_document:
-    toc: yes
-    df_print: paged
-    toc_depth: 2
 ---
 
 ## Starting a new project    
@@ -175,14 +175,68 @@ After you have committed, you might find out that you actually committed a littl
 - now click commit, and your extra comment has been added to the previous commit, instead of becoming a tiny commit in itself    
 - you can even use 'repeated amending' [as a conscious strategy](https://happygitwithr.com/repeated-amend.html)  
 
+## Make a knitted Markdown result file that can be read in Github  
+
+- When you 'knit' an .Rmd file using the knit button in RStudio, you will normally only get an HTML file as a result (or a Word/PDF file, if you chose that). The HTML file is quite big, isn't 'diffable' as all figures are saved in a kind of binary format, and isn't normally something you would put on Github.  
+
+- In order to make a result file that is publishable on Github you have to change the **header** of your .Rmd file manually. If you make your output as HTML, the last line of this header (written in something called YAML) by default looks like this:  
+```
+output: html_document
+```
+
+You have 3 options to change this:  
+
+#### 1  
+Just keep the intermediary .md file (this is an 'intermediate' file taht is by default deleted by the knitting procedure):       
+
+```
+output: 
+  html_document:
+    keep_md: true
+```
+If you have a script (.Rmd) file called for instnce `my_script.Rmd`, knitting will produce 3 products:  
+
+1. The Rmd file `my_script.Rmd` that you have run (the source for 2, 3 and 4)    
+2. An HTML file `my_script.html`   
+3. A markdown file `my_script.md` (pure text, with links to the files in 4) 
+4. A folder of images, named `my_script` (figures of 3)  
+
+When you push to Github, drop number 2, and push the source (1) and the results 3 and 4. (Note: in the Git pane, when you click the folder for staging, it will automatically select all the figures inside.) In Github, when you open the `.md` file, the figures in 4 will be visible at the right places. 
+
+#### 2  
+Make a `github_document` with a table of contents (TOC):         
+
+```
+output: 
+  github_document:  
+    toc: true  
+```
+If you want to limit the 'depth' of your TOC, add e.g. `toc_depth: 2` as a separate line. You may have to add `html_preview: false` if you encounter errors.   
+
+#### 3  
+Want to have *both* a `github_document` and HTML? Use   
+```
+output:
+  html_document:
+    toc: yes
+    df_print: paged
+    toc_depth: 2
+  md_document:
+    variant: markdown_github
+  html_notebook:
+    includes:
+      after_body: footer.html
+    toc: yes
+    highlight: pygments
+```
+
+
 ## Make a web page from your Rmd script  
 
 - To create a webpage, you need to first create a repository named **_username.github.io_**. For example, for our GitHub user NivaistR, the repository for the web page is called **_NivaistR.github.io_**.
 - You will then clone this repository just like you have learned earlier, but in this repo you will create an R Markdown (or R Notebook) file and name it **Index.Rmd**. **It is important to call it Index.Rmd! Any other name will not work!**
 - Once you knit it, Pandoc will create a file named **Index.html**. This is your actual web page. Commit your new files and push them to your repository. Your webpage will be available at https://username.github.io.
-- **We recommend you adding the web pages URL to your README.md file**
-
-
+- **We recommend you adding the web pages URL to your README.md file**  
 
 ## Undoing things  
 Undoing in Git depends a lot of whether you have only saved the file, saved and commited, or saved, committed and pushed   
